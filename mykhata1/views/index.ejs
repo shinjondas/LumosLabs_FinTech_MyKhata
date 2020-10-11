@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MyKhata</title>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var getMax = function() {
+				return $(document).height() - $(window).height();
+			}
+
+			var getValue = function() {
+				return $(window).scrollTop();
+			}
+
+			if ('max' in document.createElement('progress')) {
+				var progressBar = $('progress');
+		
+				progressBar.attr({
+					max: getMax()
+				});
+
+				$(document).on('scroll', function() {
+					progressBar.attr({
+						value: getValue()
+					});
+				});
+
+				$(window).resize(function() {
+					
+					progressBar.attr({
+						max: getMax(),
+						value: getValue()
+					});
+				});
+
+			} else {
+
+				var progressBar = $('.progress-bar'),
+					max = getMax(),
+					value, width;
+
+				var getWidth = function() {
+					
+					value = getValue();
+					width = (value / max) * 100;
+					width = width + '%';
+					return width;
+				}
+
+				var setWidth = function() {
+					progressBar.css({
+						width: getWidth()
+					});
+				}
+
+				$(document).on('scroll', setWidth);
+				$(window).on('resize', function() {
+					
+					max = getMax();
+					setWidth();
+				});
+			}
+		});
+	</script>
+</head>
+<body>
+
+	<header>
+		<div id="nav">
+			<div id="left">
+				<a href="/" class="underline"><h3 class="nav-text">HOME</h3></a>
+				<a href="/" class="underline"><h3 class="nav-text">ABOUT</h3></a>
+				<a href="/summary" class="underline"><h3 class="nav-text">SUMMARY</h3></a>
+			</div>		
+			<div id="right">
+				<a href="/signup" class="underline"><h3 class="nav-text">LOGOUT</h3></a>
+			</div>
+		</div>
+	</header>
+	<progress value="0" max="1">
+
+        <div class="progress-container">
+            <span class="progress-bar"></span>    
+        </div>
+    </progress>
+	<div id="top">
+		<h1 class="heading1">MY</h1>
+		<h1 class="heading2">KHATA</h1>
+		<img id="imag" style="float: right; padding-top: 20px; height: auto; width: 78%;" src="/images/laptop4.svg" >
+	</div>
+	<center>
+		<div id="line">
+		</div>
+	</center>
+   <form action="/" method="post">
+	<section class="features" style="background-color: #3E3C3C;">
+        <div class="list">
+        <div class="row">
+            <div class="col span-1-of-3">
+                <div class="box flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-hamburger icon"></i>
+                            <h3 class="exp-head">Food</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="exp-head">Food Expenses</h3>
+                            <br><div class="expenses">
+                            <input type="text" name="expense"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col span-1-of-3">
+                <div class="box flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-film icon"></i>
+                            <h3 class="exp-head">Entertainment</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="exp-head">Entertainment Expenses</h3>
+                            <br><div class="expenses">
+                            <input type="text" name="expense"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col span-1-of-3">
+                <div class="box flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-route icon"></i>
+                            <h3 class="exp-head">Travel</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="exp-head">Travel Expenses</h3>
+                            <br><div class="expenses">
+                            <input type="text" name="expense"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--fas fa-university icon-->
+        <div class="row">
+            <div class="col span-1-of-3">
+                <div class="box flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-university icon"></i>
+                            <h3 class="exp-head">Education</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="exp-head">Education Expenses</h3>
+                            <br><div class="expenses">
+                            <input type="text" name="expense"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--fas fa-carrot icon-->
+            <div class="col span-1-of-3">
+                <div class="box flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-carrot icon"></i>
+                            <h3 class="exp-head">Daily</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="exp-head">Daily Expenses</h3>
+                            <br><div class="expenses">
+                            <input type="text" name="expense"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col span-1-of-3">
+                <div class="box flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-plus-circle plus"></i>
+                            <h3 class="custom">Custom</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <button class="btn" onclick="createBox();"><i class="fas fa-plus-circle plus"></i></button><br><br>
+                            <div class="expenses"><input type="text" id="customName" name="button" value="Custom Add"></div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section><br>
+    <div class="row" style="display: block;"><center><input type="submit" class="blu-btn" name="button" value="Check Summary" onclick=" location.href='/summary' "></center></div>
+</form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- <script type="text/javascript">
+        var i=1;
+        
+        function createBox(){
+            var ep="";
+            var title=document.getElementById("customval").value;
+            ep+='<div class="col span-1-of-3" style="margin-left:-10px;margin-left:10px;"><div class="box flip-card"><div class="flip-card-inner"><div class="flip-card-front"><i class="fas fa-rupee-sign" style="color:rgb(182, 181, 181);"></i> <h3>'+title+'</h3></div><div class="flip-card-back"><h3>'+title+' Expenses</h3><br><div class="expenses"><input type="text"></div></div></div></div></div>';
+            if(i%3==0)
+            {
+                ep+="<br><br>";
+            }
+            i++;
+            
+            $(".list").append(ep);
+        }
+    </script>
+     -->
+</body>
+</html>
